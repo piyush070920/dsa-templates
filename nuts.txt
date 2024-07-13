@@ -1,0 +1,17 @@
+for (int i = low ; i < count; i++)
+{
+    for (int  j = low ; j < count; j++)
+    {
+        //code-here
+    }
+    
+}
+
+for (int i = low; i < count; i++){
+  //
+}
+
+int n = mat.size(), m = mat[0].size();
+
+//accumulate
+ ll ans = accumulate(vec.begin(), vec.end(), 0ll);
