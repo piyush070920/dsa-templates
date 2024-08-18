@@ -1,3 +1,11 @@
+using namespace std;
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<vi> vvi;
+
+int n = mat.size(), m = mat[0].size();
+
+//two nested for loops
 for (int i = low ; i < count; i++)
 {
     for (int  j = low ; j < count; j++)
@@ -7,22 +15,19 @@ for (int i = low ; i < count; i++)
     
 }
 
+//single for loop
 for (int i = low; i < count; i++){
   //
 }
 
-int n = mat.size(), m = mat[0].size();
+
 
 //accumulate
  ll ans = accumulate(vec.begin(), vec.end(), 0ll);
 
 
-using namespace std;
- 
-typedef long long ll;
-typedef vector<int> vi;
-typedef vector<vi> vvi;
- 
+
+
 vi read_ints(int n) {
     vi res(n);
     for (int i = 0; i < n; ++i) {
@@ -38,3 +43,48 @@ vvi read_matrix(int n, int m) {
     }
     return res;
 }
+
+
+string num_to_string(long long n)
+{
+    string s = "";
+    while (n)
+    {
+        char ch = '0' + n % 10;
+        s = ch + s;
+        n /= 10;
+    }
+    return s;
+}
+
+
+bool isPalindrome(string s)
+{
+
+    int i = 0, j = s.length() - 1;
+    while (i < j)
+        if (s[i++] != s[j--])
+            return 0;
+
+    return 1;
+}
+
+
+bool isPalindrome(long long n)
+{
+    string s = num_to_string(n);
+    return isPalindrome(s);
+}
+
+
+bool isDivBy(string dividend, int divisor)
+{
+    long long remainder = 0;
+    for (char c : dividend)
+    {
+        long long digit = (c - '0');
+        remainder = (remainder * 10 + digit) % divisor;
+    }
+    return remainder == 0;
+}
+
