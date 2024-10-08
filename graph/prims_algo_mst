@@ -1,0 +1,27 @@
+int spanningTree(int V, vector<vector<int>> adj[])
+{
+    // code here
+    priority_queue<vi, vvi, greater<vi>> pq;
+    vi vis(V, 0);
+    vvi mst; //minimum spanning tree
+    ll mst_sum_wt = 0; //min mst weight
+    pq.push({0,0,-1}); //[cost, node, parent]
+    
+    while(pq.size()) {
+        auto v = pq.top(); pq.pop();
+        auto cost = v[0], node = v[1], parent = v[2];
+        if(vis[node] == 1) continue;
+        if(parent != -1)
+            mst.push_back({parent, node});
+        mst_sum_wt += cost;
+        vis[node] = 1;
+        for(auto adjv : adj[node]) {
+            int adjNode = adjv[0], wt = adjv[1];
+            if(!vis[adjNode]){
+                pq.push({wt, adjNode, node});
+            }
+        }
+    }
+    return mst_sum_wt;
+    //return mst;
+}
